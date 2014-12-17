@@ -43,7 +43,7 @@ make && sudo make install
 cat>/root/shadowsocks_and_shadowvpn_startup.sh<<EOF
 #!/bin/bash
 #Program:
-#	This program let shadowsocks and shadowvpn start at the systerm boot
+#	This program let shadowsocks and shadowvpn start at the system boot
 #History
 #2014/12/12
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
