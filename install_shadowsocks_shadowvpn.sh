@@ -7,7 +7,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 ######################  Defaults  #######################
 
-#Update systerm
+#Update system
 apt-get update
 apt-get install git
 
