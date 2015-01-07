@@ -43,7 +43,7 @@ make && sudo make install
 cat>/root/shadowsocks_and_shadowvpn_startup.sh<<EOF
 #!/bin/bash
 #Program:
-#	This program let shadowsocks and shadowvpn start at the system boot
+#	shadowsocks and shadowvpn start
 #History
 #2014/12/12
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
@@ -61,14 +61,26 @@ iptables -F && iptables -X && iptables -Z
 
 cat>/etc/iptables.abc.rules<<EOF
 *filter
+# Allows all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
 -A INPUT -i lo -j ACCEPT
 -A INPUT ! -i lo -d 127.0.0.0/8 -j REJECT
+
+# Accepts all established inbound connections
 -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# Allows all outbound traffic
+# You could modify this to only allow certain traffic
 -A OUTPUT -j ACCEPT
+
+# Allows SSH connections from anywhere
 -A INPUT -p tcp --dport 22 -j ACCEPT
--A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
+
+# log iptables denied calls (access via 'dmesg' command)
 -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+
+# Reject all other inbound - default deny unless explicitly allowed policy
 -A INPUT -j DROP
+
 COMMIT
 EOF
 
