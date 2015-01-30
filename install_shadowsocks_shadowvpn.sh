@@ -75,6 +75,9 @@ cat>/etc/iptables.abc.rules<<EOF
 # Allows SSH connections from anywhere
 -A INPUT -p tcp --dport 22 -j ACCEPT
 
+# Allow ping
+-A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
+
 # log iptables denied calls (access via 'dmesg' command)
 -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
 
