@@ -37,7 +37,7 @@ git init
 git submodule update --init
 ./autogen.sh
 ./configure --enable-static --sysconfdir=/etc
-make && sudo make install
+make && make install
 
 #Production start-up script
 cat>/root/shadowsocks_and_shadowvpn_startup.sh<<EOF
@@ -50,7 +50,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 ######################  Defaults  #######################
 /etc/init.d/shadowsocks-libev start
-sudo shadowvpn -c /etc/shadowvpn/server.conf -s start
+shadowvpn -c /etc/shadowvpn/server.conf -s start
 exit 0
 EOF
 
@@ -87,8 +87,8 @@ cat>/etc/iptables.abc.rules<<EOF
 COMMIT
 EOF
 
-sudo iptables-restore < /etc/iptables.abc.rules
-sudo iptables-save > /etc/iptables.up.rules
+iptables-restore < /etc/iptables.abc.rules
+iptables-save > /etc/iptables.up.rules
 
 cat>/etc/network/if-post-down.d/iptables<<EOF
 #!/bin/bash
