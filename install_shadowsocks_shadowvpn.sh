@@ -39,21 +39,6 @@ git submodule update --init
 ./configure --enable-static --sysconfdir=/etc
 make && make install
 
-#Production start-up script
-cat>/root/shadowsocks_and_shadowvpn_startup.sh<<EOF
-#!/bin/bash
-#Program:
-#	shadowsocks and shadowvpn start
-#History
-#2014/12/12
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
-export PATH
-######################  Defaults  #######################
-/etc/init.d/shadowsocks-libev start
-shadowvpn -c /etc/shadowvpn/server.conf -s start
-exit 0
-EOF
-
 #Configure iptables
 apt-get install iptables
 
@@ -104,4 +89,3 @@ chmod +x /etc/network/if-pre-up.d/iptables
 
 #END
 exit 0
-
