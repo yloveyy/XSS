@@ -12,21 +12,28 @@ apt-get update
 apt-get install git
 
 #Detecting whether the directory already exists
-test -d /root/shadowsocks || mkdir /root/shadowsocks
-test -d /root/shadowvpn || mkdir /root/shadowvpn
+#test -d /root/shadowsocks || mkdir /root/shadowsocks
+#test -d /root/shadowvpn || mkdir /root/shadowvpn
 
 #Install shadowsocks
-cd /root/shadowsocks
-git clone https://github.com/madeye/shadowsocks-libev.git
+#cd /root/shadowsocks
+#git clone https://github.com/madeye/shadowsocks-libev.git
+#cd shadowsocks-libev
+#apt-get install build-essential autoconf libtool libssl-dev
+#./configure --prefix=/usr
+#make && make install
+#mkdir /etc/shadowsocks-libev
+#cp ./debian/shadowsocks-libev.init /etc/init.d/shadowsocks-libev
+#cp ./debian/shadowsocks-libev.default /etc/default/shadowsocks-libev
+#cp ./debian/config.json /etc/shadowsocks-libev/config.json
+#chmod +x /etc/init.d/shadowsocks-libev
+git clone https://github.com/shadowsocks/shadowsocks-libev.git
 cd shadowsocks-libev
-apt-get install build-essential autoconf libtool libssl-dev
-./configure --prefix=/usr
-make && make install
-mkdir /etc/shadowsocks-libev
-cp ./debian/shadowsocks-libev.init /etc/init.d/shadowsocks-libev
-cp ./debian/shadowsocks-libev.default /etc/default/shadowsocks-libev
-cp ./debian/config.json /etc/shadowsocks-libev/config.json
-chmod +x /etc/init.d/shadowsocks-libev
+apt-get install build-essential autoconf libtool libssl-dev \
+    gawk debhelper dh-systemd init-system-helpers pkg-config
+dpkg-buildpackage -us -uc -i
+cd ..
+sudo dpkg -i shadowsocks-libev*.deb
 
 #Install shadowvpn
 cd /root/shadowvpn
