@@ -12,7 +12,7 @@ apt-get update
 apt-get install git
 
 #Detecting whether the directory already exists
-#test -d /root/shadowsocks || mkdir /root/shadowsocks
+test -d /root/shadowsocks || mkdir /root/shadowsocks
 #test -d /root/shadowvpn || mkdir /root/shadowvpn
 
 #Install shadowsocks
