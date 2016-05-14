@@ -29,15 +29,15 @@ cp ./debian/config.json /etc/shadowsocks-libev/config.json
 chmod +x /etc/init.d/shadowsocks-libev
 
 #Install shadowvpn
-cd /root/shadowvpn
-apt-get install build-essential automake libtool
-git clone https://github.com/clowwindy/ShadowVPN.git
-cd ShadowVPN
-git init
-git submodule update --init
-./autogen.sh
-./configure --enable-static --sysconfdir=/etc
-make && make install
+#cd /root/shadowvpn
+#apt-get install build-essential automake libtool
+#git clone https://github.com/clowwindy/ShadowVPN.git
+#cd ShadowVPN
+#git init
+#git submodule update --init
+#./autogen.sh
+#./configure --enable-static --sysconfdir=/etc
+#make && make install
 
 #Configure iptables
 apt-get install iptables
