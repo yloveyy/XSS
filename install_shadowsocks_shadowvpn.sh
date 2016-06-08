@@ -57,7 +57,7 @@ cat>/etc/iptables.abc.rules<<EOF
 # You could modify this to only allow certain traffic
 -A OUTPUT -j ACCEPT
 
-# Allows SSH connections from anywhere
+# Allows TCP and UDP connections from anywhere
 -A INPUT -p tcp --dport 22 -j ACCEPT
 
 # Allow ping
