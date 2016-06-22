@@ -44,7 +44,7 @@ apt-get install iptables
 
 iptables -F && iptables -X && iptables -Z
 
-cat>/etc/iptables.abc.rules<<EOF
+cat>/etc/iptables.rules<<EOF
 *filter
 # Allows all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
 -A INPUT -i lo -j ACCEPT
@@ -72,7 +72,7 @@ cat>/etc/iptables.abc.rules<<EOF
 COMMIT
 EOF
 
-iptables-restore < /etc/iptables.abc.rules
+iptables-restore < /etc/iptables.rules
 iptables-save > /etc/iptables.up.rules
 
 cat>/etc/network/if-post-down.d/iptables<<EOF
