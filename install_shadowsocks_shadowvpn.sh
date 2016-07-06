@@ -60,6 +60,10 @@ cat>/etc/iptables.rules<<EOF
 # Allows TCP and UDP connections from anywhere
 -A INPUT -p tcp --dport 22 -j ACCEPT
 
+# Allowable error time 1 minute
+-A INPUT -p tcp -m state --syn --state NEW --dport 22 -m limit --limit 1/minute --limit-burst 1 -j ACCEPT
+-A INPUT -p tcp -m state --syn --state NEW --dport 22 -j DROP
+
 # Allow ping
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
 
