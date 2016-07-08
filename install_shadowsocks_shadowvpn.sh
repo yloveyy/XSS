@@ -44,7 +44,7 @@ apt-get install iptables
 
 iptables -F && iptables -X && iptables -Z
 
-cat>/etc/iptables.rules<<EOF
+cat>/etc/iptables.test.rules<<EOF
 *filter
 # Allows all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
 -A INPUT -i lo -j ACCEPT
@@ -60,10 +60,6 @@ cat>/etc/iptables.rules<<EOF
 # Allows TCP and UDP connections from anywhere
 -A INPUT -p tcp --dport 22 -j ACCEPT
 
-# Allowable error time 1 minute
--A INPUT -p tcp -m state --syn --state NEW --dport 22 -m limit --limit 1/minute --limit-burst 1 -j ACCEPT
--A INPUT -p tcp -m state --syn --state NEW --dport 22 -j DROP
-
 # Allow ping
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
 
@@ -76,7 +72,7 @@ cat>/etc/iptables.rules<<EOF
 COMMIT
 EOF
 
-iptables-restore < /etc/iptables.rules
+iptables-restore < /etc/iptables.test.rules
 iptables-save > /etc/iptables.up.rules
 
 cat>/etc/network/if-post-down.d/iptables<<EOF
