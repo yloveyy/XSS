@@ -10,21 +10,22 @@ export PATH
 #Update system
 apt-get update
 apt-get install git
+apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev asciidoc xmlto
 
-#Detecting whether the directory already exists
-test -d /root/shadowsocks || mkdir /root/shadowsocks
+# Detecting whether the directory already exists
+#test -d /root/shadowsocks || mkdir /root/shadowsocks
 #test -d /root/shadowvpn || mkdir /root/shadowvpn
 
 #Install shadowsocks
-cd /root/shadowsocks
 git clone https://github.com/shadowsocks/shadowsocks-libev.git
 cd shadowsocks-libev
-apt-get install build-essential autoconf libtool libssl-dev
+./autogen.sh
 ./configure --prefix=/usr
 make && make install
-mkdir /etc/shadowsocks-libev
+mkdir -p /etc/shadowsocks-libev
 cp ./debian/shadowsocks-libev.init /etc/init.d/shadowsocks-libev
 cp ./debian/shadowsocks-libev.default /etc/default/shadowsocks-libev
+cp ./debian/shadowsocks-libev.service /lib/systemd/system/
 cp ./debian/config.json /etc/shadowsocks-libev/config.json
 chmod +x /etc/init.d/shadowsocks-libev
 
