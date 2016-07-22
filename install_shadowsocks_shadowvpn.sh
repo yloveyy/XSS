@@ -58,8 +58,10 @@ cat>/etc/iptables.test.rules<<EOF
 # You could modify this to only allow certain traffic
 -A OUTPUT -j ACCEPT
 
-# Allows TCP and UDP connections from anywhere
+# Allows SSH connections from anywhere
 -A INPUT -p tcp --dport 22 -j ACCEPT
+# Open serial port
+-A INPUT -p tcp --dport 10010:10086 -j ACCEPT
 
 # Allow ping
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
