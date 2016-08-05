@@ -12,10 +12,6 @@ apt-get update
 apt-get install git
 apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev asciidoc xmlto
 
-# Detecting whether the directory already exists
-#test -d /root/shadowsocks || mkdir /root/shadowsocks
-#test -d /root/shadowvpn || mkdir /root/shadowvpn
-
 #Install shadowsocks
 git clone https://github.com/shadowsocks/shadowsocks-libev.git
 cd shadowsocks-libev
@@ -29,18 +25,24 @@ cp ./debian/shadowsocks-libev.service /lib/systemd/system/
 cp ./debian/config.json /etc/shadowsocks-libev/config.json
 chmod +x /etc/init.d/shadowsocks-libev
 
-#Install shadowvpn
-#cd /root/shadowvpn
-#apt-get install build-essential automake libtool
-#git clone https://github.com/clowwindy/ShadowVPN.git
-#cd ShadowVPN
-#git init
-#git submodule update --init
-#./autogen.sh
-#./configure --enable-static --sysconfdir=/etc
-#make && make install
+# install shadowsocksR
+git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
 
-#Configure iptables
+# install net-speeder
+apt-get install unzip
+apt-get install libnet1-dev
+apt-get install libpcap0.8-dev
+
+wget https://github.com/snooda/net-speeder/archive/master.zip
+unzip master.zip
+# venetX,OpenVZ not Xen,KVM
+sh build.sh -DCOOKED
+
+# install V2ray
+apt-get install curl
+curl -L -s https://raw.githubusercontent.com/v2ray/v2ray-core/master/release/install-release.sh | bash
+
+# Configure iptables
 apt-get install iptables
 
 iptables -F && iptables -X && iptables -Z
