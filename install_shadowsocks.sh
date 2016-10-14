@@ -23,6 +23,11 @@ sudo dpkg -i shadowsocks-libev*.deb
 # install shadowsocksR
 git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
 
+# install serverspeeder 
+wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh && bash serverspeeder-all.sh
+# restart serverspeeder
+/serverspeeder/bin/serverSpeeder.sh restart
+
 # install net-speeder
 apt-get install unzip
 apt-get install libnet1-dev
