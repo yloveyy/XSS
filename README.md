@@ -1,1 +1,1 @@
-Debian 按照 ShadowSocks 参考
+Debian 安装 ShadowSocks 参考
