@@ -22,7 +22,7 @@ cd ..
 sudo dpkg -i shadowsocks-libev*.deb
     
 # install shadowsocksR
-git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
+git clone -b manyuser https://github.com/shadowsocksr/shadowsocks.git
 
 # install serverspeeder 
 wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh && bash serverspeeder-all.sh
@@ -39,15 +39,9 @@ unzip master.zip
 # venetX,OpenVZ not Xen,KVM
 sh build.sh -DCOOKED
 
-# install V2ray
-apt-get install curl
-curl -L -s https://raw.githubusercontent.com/v2ray/v2ray-core/master/release/install-release.sh | bash
-
 # Configure iptables
 apt-get install iptables
-
-iptables -F && iptables -X && iptables -Z
-
+#iptables -F && iptables -X && iptables -Z
 cat>/etc/iptables.test.rules<<EOF
 *filter
 # Allows all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
