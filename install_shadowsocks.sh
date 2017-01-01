@@ -22,7 +22,7 @@ cd ..
 sudo dpkg -i shadowsocks-libev*.deb
     
 # install shadowsocksR
-git clone -b manyuser https://github.com/shadowsocksr/shadowsocksr.git
+git clone https://github.com/shadowsocksr/shadowsocksr.git
 
 # install serverspeeder 
 wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh && bash serverspeeder-all.sh
@@ -33,7 +33,6 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspe
 apt-get install unzip
 apt-get install libnet1-dev
 apt-get install libpcap0.8-dev
-
 wget https://github.com/snooda/net-speeder/archive/master.zip
 unzip master.zip
 # venetX,OpenVZ not Xen,KVM
