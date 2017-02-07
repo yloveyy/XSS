@@ -1,6 +1,6 @@
 #!/bin/bash
 #Program:
-#	Install shadowsocks and shadowvpn
+#	Install shadowsocks and others
 #History
 #2014/12/12
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
