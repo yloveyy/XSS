@@ -12,15 +12,15 @@ export PATH
 # enable debian-backports to install systemd-compatibility packages like dh-systemd or init-system-helpers
 # vi /etc/apt/sources.list
 # deb http://ftp.debian.org/debian wheezy-backports main
-apt-get update
-apt-get install git
-apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev \
-    gawk debhelper dh-systemd init-system-helpers pkg-config asciidoc xmlto apg libpcre3-dev
-git clone https://github.com/shadowsocks/shadowsocks-libev.git
-cd shadowsocks-libev
-dpkg-buildpackage -b -us -uc -i
-cd ..
-sudo dpkg -i shadowsocks-libev*.deb
+# apt-get update
+# apt-get install git
+# apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev \
+#    gawk debhelper dh-systemd init-system-helpers pkg-config asciidoc xmlto apg libpcre3-dev
+# git clone https://github.com/shadowsocks/shadowsocks-libev.git
+# cd shadowsocks-libev
+# dpkg-buildpackage -b -us -uc -i
+# cd ..
+# dpkg -i shadowsocks-libev*.deb
 
 # install shadowsocks-libev 3.x frome soure
 apt-get update
