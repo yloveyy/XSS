@@ -1,4 +1,5 @@
-不是一键安装脚本！都是网上一些脚本的收集。仅供参考。
+都是网上一些脚本的收集。
+
 参考：
 
 https://github.com/shadowsocks/shadowsocks-libev/issues/1224
