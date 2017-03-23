@@ -197,5 +197,8 @@ iptables-restore < /etc/iptables.rules
 EOF
 chmod +x /etc/network/if-pre-up.d/iptables
 
+# change the time zone
+cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
 #END
 exit 0
