@@ -51,7 +51,7 @@ cp ./debian/config.json /etc/shadowsocks-libev/config.json
 chmod +x /etc/init.d/shadowsocks-libev
     
 # install shadowsocksR
-git clone https://github.com/shadowsocksr/shadowsocksr.git
+git clone https://github.com/chnt7305/shadowsocksr.git
 cd shadowsocksr
 bash initcfg.sh
 cd ..
