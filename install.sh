@@ -138,7 +138,7 @@ esac
 exit $RETVAL
 EOF
 
-chmod 755 /etc/init.d/shadowsocksr ; update-rc.d shadowsocksr defaults ; service shadowsocksr start
+chmod 755 /etc/init.d/shadowsocksr 
 
 # install net-speeder
 # apt-get install unzip
