@@ -148,6 +148,7 @@ chmod 755 /etc/init.d/shadowsocksr
 # unzip master.zip
 # venetX,OpenVZ not Xen,KVM
 # sh build.sh -DCOOKED
+# nohup /root/net-speeder-master/net_speeder venet0 "ip" >/dev/null 2>&1 &
 
 # Configure iptables
 apt-get install iptables
