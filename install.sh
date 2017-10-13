@@ -22,9 +22,8 @@ export PATH
 # cd ..
 # dpkg -i shadowsocks-libev*.deb
 
-# install shadowsocks-libev 3.x frome soure
 apt-get update
-apt-get install vim git
+apt-get install vim git screen
 
 # configure vim
 cat>/root/.vimrc<<EOF
@@ -32,7 +31,7 @@ set number
 syntax on
 EOF
 
-# install shadowsocks-libev 3.x
+# install shadowsocks-libev 3.x frome soure
 git clone https://github.com/shadowsocks/shadowsocks-libev.git
 cd shadowsocks-libev
 git submodule update --init --recursive
@@ -54,7 +53,7 @@ chmod +x /etc/init.d/shadowsocks-libev
 git clone https://github.com/chnt7305/shadowsocksr.git
 cd shadowsocksr
 bash initcfg.sh
-cd ..
+vim user-config
 
 cat>/etc/init.d/shadowsocksr<<EOF
 #!/bin/sh
@@ -168,8 +167,8 @@ cat>/etc/iptables.test.rules<<EOF
 
 # Allows SSH connections from anywhere
 -A INPUT -p tcp --dport 22 -j ACCEPT
-# Open serial port
--A INPUT -p tcp --dport 10010:10086 -j ACCEPT
+# Open TCP port
+-A INPUT -p tcp --dport 10086 -j ACCEPT
 
 # Allow ping
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
