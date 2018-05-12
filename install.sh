@@ -163,12 +163,13 @@ cat>/etc/iptables.test.rules<<EOF
 
 # Allows all outbound traffic
 # You could modify this to only allow certain traffic
--A OUTPUT -j ACCEPT
+-A OUTPUT -d xxx.xxx.xxx.xxx -p tcp --sport xxxx -j ACCEPT
+-A OUTPUT -p tcp --sport xxxx -j DROP
 
 # Allows SSH connections from anywhere
 -A INPUT -p tcp --dport 22 -j ACCEPT
 # Open TCP port
--A INPUT -p tcp --dport 10086 -j ACCEPT
+-A INPUT -p tcp --dport xxxx -j ACCEPT
 
 # Allow ping
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
@@ -178,7 +179,7 @@ cat>/etc/iptables.test.rules<<EOF
 
 # Reject all other inbound - default deny unless explicitly allowed policy
 -A INPUT -j DROP
-
+-A OUTPUT -j ACCEPT
 COMMIT
 EOF
 
