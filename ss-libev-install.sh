@@ -12,7 +12,7 @@ export PATH
 ######################  Defaults  #######################
 
 apt-get update
-apt-get install git -y
+apt-get install git screen haveged -y
 
 git clone https://github.com/shadowsocks/shadowsocks-libev.git
 cd shadowsocks-libev
@@ -51,6 +51,9 @@ cp ./debian/shadowsocks-libev.default /etc/default/shadowsocks-libev
 cp ./debian/shadowsocks-libev.service /lib/systemd/system/		
 cp ./debian/config.json /etc/shadowsocks-libev/config.json
 chmod +x /etc/init.d/shadowsocks-libev
+
+# make sure haveged configured to start on boot
+update-rc.d haveged defaults
 
 echo "Shadowsocks-libev install completed"
 
