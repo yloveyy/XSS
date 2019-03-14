@@ -20,7 +20,7 @@ EOF
 git clone https://github.com/chnt7305/shadowsocksr.git
 cd shadowsocksr
 bash initcfg.sh
-vim user-config
+vim user-config.json
 
 cat>/etc/init.d/shadowsocksr<<EOF
 #!/bin/sh
