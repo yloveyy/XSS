@@ -31,7 +31,7 @@ popd
 ldconfig
 
 #Build mbedtls
-export MBEDTLS_VER=2.16.0
+export MBEDTLS_VER=2.16.1
 wget https://tls.mbed.org/download/mbedtls-$MBEDTLS_VER-gpl.tgz
 tar xvf mbedtls-$MBEDTLS_VER-gpl.tgz
 pushd mbedtls-$MBEDTLS_VER
