@@ -1,6 +1,6 @@
 #!/bin/bash
 #Program:
-#	Install shadowsocks and others
+#	Install shadowsocksr and others
 #History
 #2014/12/12
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
@@ -8,7 +8,7 @@ export PATH
 ######################  Defaults  #######################
 
 apt-get update
-apt-get install vim git screen
+apt-get install vim git screen -y
 
 # configure vim
 cat>/root/.vimrc<<EOF
@@ -141,19 +141,6 @@ COMMIT
 EOF
 
 iptables-restore < /etc/iptables.test.rules
-iptables-save > /etc/iptables.up.rules
-
-cat>/etc/network/if-post-down.d/iptables<<EOF
-#!/bin/bash
-iptables-save > /etc/iptables.rules
-EOF
-chmod +x /etc/network/if-post-down.d/iptables
-
-cat>/etc/network/if-pre-up.d/iptables<<EOF
-#!/bin/bash
-iptables-restore < /etc/iptables.rules
-EOF
-chmod +x /etc/network/if-pre-up.d/iptables
 
 # change the time zone
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
