@@ -1,18 +1,18 @@
 #!/bin/bash
 #
 #Program:
-#Install shadowsocks-libev 3.x on Ubuntu 14.04 and higher version
+#Install shadowsocks-libev 3.x on Ubuntu 18.04 and higher version
 #Run the script as root
 #History
 #2018/06/24
 #Author
-#https://github.com/chnt7305
+#https://github.com/sdconf
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 ######################  Defaults  #######################
 
 apt-get update
-apt-get install git -y
+apt-get install git haveged -y
 
 git clone https://github.com/shadowsocks/shadowsocks-libev.git
 cd shadowsocks-libev
