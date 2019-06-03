@@ -17,7 +17,7 @@ syntax on
 EOF
     
 # install shadowsocksR
-git clone https://github.com/chnt7305/shadowsocksr.git
+git clone https://github.com/sdconf/shadowsocksr.git
 cd shadowsocksr
 bash initcfg.sh
 vim user-config.json
