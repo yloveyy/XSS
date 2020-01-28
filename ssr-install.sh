@@ -17,7 +17,7 @@ syntax on
 EOF
     
 # install shadowsocksR
-git clone https://github.com/sdconf/shadowsocksr.git
+git clone https://github.com/yloveyy/shadowsocksr.git
 cd shadowsocksr
 bash initcfg.sh
 vim user-config.json
@@ -105,45 +105,6 @@ exit $RETVAL
 EOF
 
 chmod 755 /etc/init.d/shadowsocksr 
-
-# Configure iptables
-apt-get install iptables
-#iptables -F && iptables -X && iptables -Z
-cat>/etc/iptables.test.rules<<EOF
-*filter
-# Allows all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
--A INPUT -i lo -j ACCEPT
--A INPUT ! -i lo -d 127.0.0.0/8 -j REJECT
-
-# Accepts all established inbound connections
--A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-
-# Allows all outbound traffic
-# You could modify this to only allow certain traffic
--A OUTPUT -d xxx.xxx.xxx.xxx -p tcp --sport xxxx -j ACCEPT
--A OUTPUT -p tcp --sport xxxx -j DROP
-
-# Allows SSH connections from anywhere
--A INPUT -p tcp --dport 22 -j ACCEPT
-# Open TCP port
--A INPUT -p tcp --dport xxxx -j ACCEPT
-
-# Allow ping
--A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
-
-# log iptables denied calls (access via 'dmesg' command)
--A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
-
-# Reject all other inbound - default deny unless explicitly allowed policy
--A INPUT -j DROP
--A OUTPUT -j ACCEPT
-COMMIT
-EOF
-
-iptables-restore < /etc/iptables.test.rules
-
-# change the time zone
-cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 #END
 exit 0
