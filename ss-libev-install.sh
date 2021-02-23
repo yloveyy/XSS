@@ -22,7 +22,7 @@ apt-get install --no-install-recommends gettext build-essential autoconf libtool
 
 # Build libsodium
 export LIBSODIUM_VER=1.0.18
-wget --no-check-certificate https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VER.tar.gz
+curl -O https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VER.tar.gz
 tar xvf libsodium-$LIBSODIUM_VER.tar.gz
 pushd libsodium-$LIBSODIUM_VER
 ./configure --prefix=/usr && make
@@ -32,7 +32,7 @@ ldconfig
 
 #Build mbedtls
 export MBEDTLS_VER=2.16.6
-wget --no-check-certificate https://tls.mbed.org/download/mbedtls-$MBEDTLS_VER-gpl.tgz
+curl -O https://tls.mbed.org/download/mbedtls-$MBEDTLS_VER-gpl.tgz
 tar xvf mbedtls-$MBEDTLS_VER-gpl.tgz
 pushd mbedtls-$MBEDTLS_VER
 make SHARED=1 CFLAGS=-fPIC
