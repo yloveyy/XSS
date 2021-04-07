@@ -12,7 +12,7 @@ export PATH
 ######################  Defaults  #######################
 
 apt-get update
-apt-get install git curl haveged -y
+apt-get install git curl pkg-config haveged -y
 
 git clone https://github.com/shadowsocks/shadowsocks-libev.git
 cd shadowsocks-libev
