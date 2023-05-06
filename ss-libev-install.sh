@@ -12,7 +12,7 @@ export PATH
 ######################  Defaults  #######################
 
 apt-get update
-apt-get install git curl pkg-config haveged -y
+apt-get install git curl wget python2 pkg-config haveged -y
 
 git clone https://github.com/shadowsocks/shadowsocks-libev.git
 cd shadowsocks-libev
@@ -32,9 +32,9 @@ ldconfig
 
 #Build mbedtls
 export MBEDTLS_VER=2.16.6
-curl -O https://tls.mbed.org/download/mbedtls-$MBEDTLS_VER-gpl.tgz
-tar xvf mbedtls-$MBEDTLS_VER-gpl.tgz
-pushd mbedtls-$MBEDTLS_VER
+wget https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/mbedtls-$MBEDTLS_VER.tar.gz
+tar xvf mbedtls-$MBEDTLS_VER.tar.gz
+pushd mbedtls-mbedtls-$MBEDTLS_VER
 make SHARED=1 CFLAGS=-fPIC
 make DESTDIR=/usr install
 popd
